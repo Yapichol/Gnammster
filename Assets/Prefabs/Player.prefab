@@ -144,3 +144,11 @@ MonoBehaviour:
   widthWheel: 0.45
   offsetWheel: {x: 0.38, y: 0.146, z: 0}
   speed: 0.4
+  jumpHeight: 0.2
+  speedJump: 1
+  useJumpAcceleration: 1
+  accelerationSpeed: 4
+  activeHover: 0
+  coefHover: 7
+  useProgressiveJump: 0
+  maxProgJump: 0.1
