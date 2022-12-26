@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public float maxProgJump = 1.0f;
 
     private Animator m_animator;
-    private string[] m_animname = new string[] { "Idle", "Run", "Dead" };
+    private string[] m_animations = new string[] { "Idle", "Run", "Dead" };
 
     // Start is called before the first frame update
     void Start()

@@ -21,8 +21,6 @@ public class Rotator : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow)) _rotation = Vector3.down;
         else _rotation = Vector3.zero;
         */
-
         transform.Rotate(_rotation * _speed * Time.deltaTime);
-        // test github contrib
     }
 }
