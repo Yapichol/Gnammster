@@ -23,5 +23,6 @@ public class Rotator : MonoBehaviour
         */
 
         transform.Rotate(_rotation * _speed * Time.deltaTime);
+        // test github contrib
     }
 }
