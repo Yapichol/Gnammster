@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     public bool useProgressiveJump = false;
     public float maxProgJump = 1.0f;
 
+    private Animator m_animator;
+    private string[] m_animations = new string[] { "Idle", "Run", "Dead" };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,9 @@ public class PlayerController : MonoBehaviour
         limRight = transform.position.z + (widthWheel / 2);
         limLeft = transform.position.z - (widthWheel / 2);
         groundHeight = transform.position.y;
+        m_animator = GetComponent<Animator>(); // Handle animations through animator state machine
+
+
     }
 
     // Update is called once per frame
