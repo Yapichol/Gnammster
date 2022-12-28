@@ -384,7 +384,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 74.4
   orthographic: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e89f2eecb1a91540bd79995a28053e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheel: {fileID: 0}
+  wheel: {fileID: 1090499732847977426, guid: 3d9b979068e41c24890d7b7e49e54b19, type: 3}
   widthWheel: 0.45
   offsetWheel: {x: 0.38, y: 0.146, z: 0}
   speed: 0.4
