@@ -538,6 +538,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roue
       objectReference: {fileID: 0}
+    - target: {fileID: 7762207437509540755, guid: 3d9b979068e41c24890d7b7e49e54b19, type: 3}
+      propertyPath: _rotation.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7762207437509540755, guid: 3d9b979068e41c24890d7b7e49e54b19, type: 3}
+      propertyPath: _rotation.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8779605113298250237, guid: 3d9b979068e41c24890d7b7e49e54b19, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1
@@ -566,5 +574,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7762207437509540755, guid: 3d9b979068e41c24890d7b7e49e54b19, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d9b979068e41c24890d7b7e49e54b19, type: 3}
