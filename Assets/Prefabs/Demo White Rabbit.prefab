@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 95476112841948836}
   - component: {fileID: 114735056877410658}
   - component: {fileID: 4504999598515368685}
+  - component: {fileID: 2574333253281410148}
   m_Layer: 0
   m_Name: Demo White Rabbit
   m_TagString: Untagged
@@ -264,6 +265,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eff140b25d64601aabc6ba32245d099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2574333253281410148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115346038830892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e89f2eecb1a91540bd79995a28053e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheel: {fileID: 0}
+  widthWheel: 0.45
+  offsetWheel: {x: 0.38, y: 0.146, z: 0}
+  speed: 0.4
+  jumpHeight: 0.2
+  speedJump: 1
+  useJumpAcceleration: 1
+  accelerationSpeed: 4
+  activeHover: 1
+  coefHover: 15
+  useProgressiveJump: 0
+  maxProgJump: 0.1
 --- !u!1 &1156470716658996
 GameObject:
   m_ObjectHideFlags: 0
