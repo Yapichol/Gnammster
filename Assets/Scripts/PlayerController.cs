@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
 
     public float speed = 1.0f;
 
-
     public float jumpHeight = 1.0f;
     public float speedJump = 1.0f;
     private float groundHeight = 0.0f;
@@ -50,6 +49,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        GameObject [] test =  GameObject.FindGameObjectsWithTag("Obstacles");
+
         if(Input.GetKey(KeyCode.RightArrow) && (transform.position.z < limRight))
         {
             transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, 1), speed * Time.deltaTime);
@@ -107,5 +109,11 @@ public class PlayerController : MonoBehaviour
                 acceleration = 1.0f;
             }*/
         }
+    }
+
+    // Handle collisions
+    private void onTriggerEnter(Collider other) {
+        other.gameObject.SetActive(false);
+        // other.GetComponent<Renderer>().enabled = false;
     }
 }
