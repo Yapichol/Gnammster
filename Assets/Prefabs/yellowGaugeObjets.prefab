@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2418507763777835168}
   m_Layer: 5
-  m_Name: yellowGaugeObjets
+  m_Name: YellowGaugeObjets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
