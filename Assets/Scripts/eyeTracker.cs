@@ -51,6 +51,7 @@ namespace Tobii.Gaming.Examples.GazePointData
 
 
 		public bool showGP;
+		public GameObject eyeTrackerPoint;
 
 		// Start is called before the first frame update
 		void Start()
@@ -79,7 +80,7 @@ namespace Tobii.Gaming.Examples.GazePointData
                 //xCoord.text = "x (in px): " + roundedSampleInput.x;
                 //yCoord.text = "y (in px): " + roundedSampleInput.y;
 
-                Debug.Log("x = " + roundedSampleInput.x + "     y = " + roundedSampleInput.y);
+                //Debug.Log("x = " + roundedSampleInput.x + "     y = " + roundedSampleInput.y);
 
 				if (showGP == true)
                 {
@@ -100,6 +101,10 @@ namespace Tobii.Gaming.Examples.GazePointData
 			{
 				UpdateGazePointCloud(gazePoint);
 				_lastGazePoint = gazePoint;
+				Vector2 gazePosition = gazePoint.Screen;
+				//yCoord.color = xCoord.color = Color.white;
+				Vector2 roundedSampleInput = new Vector2(Mathf.RoundToInt(gazePosition.x), Mathf.RoundToInt(gazePosition.y));
+				eyeTrackerPoint.GetComponent<RectTransform>().position = new Vector3(roundedSampleInput.x, roundedSampleInput.y, eyeTrackerPoint.GetComponent<RectTransform>().position.z);
 			}
 			UpdateGazePointCloudVisibility();
 		}

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3782558829188499487
+--- !u!1 &8900549495057280437
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3782558829188499486}
-  - component: {fileID: 3782558829188499937}
+  - component: {fileID: 8900549495057280439}
+  - component: {fileID: 8900549495057280438}
   m_Layer: 0
-  m_Name: FoodManager
+  m_Name: EyeTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3782558829188499486
+--- !u!4 &8900549495057280439
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3782558829188499487}
+  m_GameObject: {fileID: 8900549495057280437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9390247, y: 3.8318129, z: -5.765482}
+  m_LocalPosition: {x: 0.061570168, y: 1.699194, z: 10.596048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3782558829188499937
+--- !u!114 &8900549495057280438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3782558829188499487}
+  m_GameObject: {fileID: 8900549495057280437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa31c52b19457cf438673cb50045d28b, type: 3}
+  m_Script: {fileID: 11500000, guid: c126bf8a866f52b468dfb3dbae84891c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheel: {fileID: 0}
-  largeurWheel: 0.45
-  rayonWheel: 1
-  prefabsFoods:
-  - {fileID: 3164680745430315364, guid: dc857983be10db54da4d806d6fe2ea38, type: 3}
-  freqSpawnMin: 1
-  freqSpawnMax: 5
+  PointCloudSize: 10
+  PointSprite: {fileID: 0}
+  PointScale: 0.1
+  VisualizationDistance: 10
+  FilterSmoothingFactor: 0.15
+  showGP: 1
+  eyeTrackerPoint: {fileID: 0}
