@@ -9,16 +9,13 @@ public class MenuScript : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("GameScene");
-        //Debug.Log("PlayButton pressed");
         SceneManager.UnloadSceneAsync("MenuScene");
-        //Debug.Log("MenuScene unloaded");
     }
 
 
     // Exits the menu and ends the game when the "QuitButton" is pressed 
     public void QuitGame()
     {
-        //Debug.Log("QuitButton pressed");
         Application.Quit();
     }
 }
