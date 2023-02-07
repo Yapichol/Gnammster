@@ -1,12 +1,18 @@
 fileFormatVersion: 2
 guid: c4b29df76fe2c074cbe4e40db63a1985
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2090769259312667705
+    second: lumacaImage
+  - first:
+      213: -7783980059147831935
+    second: flowersImage
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -35,13 +41,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -50,9 +56,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -75,13 +81,86 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: lumacaImage
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 883
+        width: 314
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 153, y: 28}
+        - {x: 153, y: 69}
+        - {x: 111, y: 148}
+        - {x: 12, y: 148}
+        - {x: -26, y: 97}
+        - {x: -141, y: 76}
+        - {x: -157, y: 69}
+        - {x: -157, y: -120}
+        - {x: -140, y: -148}
+        - {x: -134, y: -148}
+        - {x: -133, y: -147}
+        - {x: 104, y: -139}
+        - {x: 138, y: -113}
+      - - {x: -132, y: 49}
+        - {x: 101, y: 49}
+        - {x: 101, y: -105}
+        - {x: -86, y: -105}
+        - {x: -87, y: -106}
+        - {x: -132, y: -106}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93c53a06097e30d10800000000000000
+      internalID: 2090769259312667705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flowersImage
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 398
+        width: 314
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 185f4c3a06fb9f390800000000000000
+      internalID: -7783980059147831935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b01913a927e0909408f4aefd89ffb652
     internalID: 0
     vertices: []
     indices: 

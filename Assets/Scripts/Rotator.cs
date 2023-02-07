@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rotator : MonoBehaviour
 {
     [SerializeField] private Vector3 _rotation;
-    [SerializeField] private float _speed = 25f;
+    [SerializeField] public float _speed = 25f;
     private Animator m_animator;
 
     void Start(){
