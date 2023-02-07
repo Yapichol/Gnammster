@@ -65,12 +65,25 @@ namespace Tobii.Gaming.Examples.GazePointData
 
 				_gazeBubbleRenderer = GetComponent<SpriteRenderer>();
 			}
+            else
+            {
+				eyeTrackerPoint.SetActive(false);
+            }
 		}
 
         // Update is called once per frame
         void Update()
         {
-            GazePoint gazePoint = TobiiAPI.GetGazePoint();
+			if (showGP == true)
+			{
+				eyeTrackerPoint.SetActive(true);
+			}
+			else
+			{
+				eyeTrackerPoint.SetActive(false);
+			}
+
+			GazePoint gazePoint = TobiiAPI.GetGazePoint();
             if (gazePoint.IsValid)
             {
                 Vector2 gazePosition = gazePoint.Screen;
