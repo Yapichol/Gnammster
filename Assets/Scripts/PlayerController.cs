@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        GameObject [] test =  GameObject.FindGameObjectsWithTag("Obstacles");
+
         if(wheel != null)
         {
             transform.position = wheel.transform.position + offsetWheel;
@@ -49,8 +52,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        GameObject [] test =  GameObject.FindGameObjectsWithTag("Obstacles");
 
         if(Input.GetKey(KeyCode.RightArrow) && (transform.position.z < limRight))
         {
@@ -112,8 +113,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // Handle collisions
-    private void onTriggerEnter(Collider other) {
-        other.gameObject.SetActive(false);
-        // other.GetComponent<Renderer>().enabled = false;
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Obstacles"))
+        {
+            Debug.Log("Collision  !!!");
+            other.gameObject.SetActive(false);
+            //other.GetComponent<Renderer>().enabled = false;
+        }
     }
 }
