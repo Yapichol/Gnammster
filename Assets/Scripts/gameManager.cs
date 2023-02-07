@@ -37,7 +37,7 @@ public class gameManager : MonoBehaviour
     void ComputeScore()
     {
         int healthEquilibriumFactor = 1; // to delete when we'll have the good value from jauges script
-        score = score + (int) (rotator._speed * healthEquilibriumFactor);
+        score = score + (int)(rotator._speed * healthEquilibriumFactor);
         //Debug.Log(score);
         textScore.text = score.ToString();
     }
