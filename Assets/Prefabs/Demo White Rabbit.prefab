@@ -197,8 +197,8 @@ GameObject:
   - component: {fileID: 95476112841948836}
   - component: {fileID: 114735056877410658}
   - component: {fileID: 2574333253281410148}
-  - component: {fileID: 6448851664657099515}
-  - component: {fileID: 6186712514055393393}
+  - component: {fileID: 8681953854921556290}
+  - component: {fileID: 5972109628957479059}
   m_Layer: 0
   m_Name: Demo White Rabbit
   m_TagString: Player
@@ -278,7 +278,20 @@ MonoBehaviour:
   coefHover: 15
   useProgressiveJump: 0
   maxProgJump: 0.1
---- !u!54 &6448851664657099515
+--- !u!65 &8681953854921556290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115346038830892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.7096417, z: 1}
+  m_Center: {x: 0, y: 0.365319, z: 0}
+--- !u!54 &5972109628957479059
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,23 +303,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6186712514055393393
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115346038830892}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3691426, y: 0.46590066, z: 0.7968556}
-  m_Center: {x: 0.0027316436, y: 0.3194003, z: 0.10156299}
 --- !u!1 &1156470716658996
 GameObject:
   m_ObjectHideFlags: 0
