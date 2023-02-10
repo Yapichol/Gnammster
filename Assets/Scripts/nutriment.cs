@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class nutriment : MonoBehaviour
 {
-    public float sugar;
-    public float salt;
-    public float fat;
+    public float proteines;
+    public float lipides;
+    public float glucides;
     
     
     // Start is called before the first frame update
@@ -26,7 +26,7 @@ public class nutriment : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            print("Sugar :" + sugar + "     Salt :" + salt + "     Fat :" + fat);
+            print("proteines :" + proteines + "     lipides :" + lipides + "     glucides :" + glucides);
 
             Destroy(this.gameObject);
         }

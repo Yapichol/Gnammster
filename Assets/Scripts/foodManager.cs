@@ -10,6 +10,7 @@ public class foodManager : MonoBehaviour
     public GameObject[] prefabsFoods;
     public float freqSpawnMin;
     public float freqSpawnMax;
+    public bool randomSpawn;
 
     private bool canSpawn;
 
@@ -22,9 +23,9 @@ public class foodManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canSpawn)
+        if (canSpawn && randomSpawn)
         {
-            spawnFood();
+            spawnFood(-1);
             canSpawn = false;
             float timeNextSpawn = Random.Range(freqSpawnMin, freqSpawnMax);
             StartCoroutine(coolDown(timeNextSpawn));
@@ -33,9 +34,13 @@ public class foodManager : MonoBehaviour
 
 
 
-    void spawnFood()
+    void spawnFood(int foodNumber)
     {
-        int numFood = selectFoodToSpawn();
+        int numFood = foodNumber;
+        if (randomSpawn || (foodNumber < 0 || foodNumber >= prefabsFoods.Length))
+        {
+            numFood = selectFoodToSpawn();
+        }
 
         GameObject newFood = Instantiate(prefabsFoods[numFood]);
 
