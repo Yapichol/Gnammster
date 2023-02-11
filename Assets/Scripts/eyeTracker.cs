@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Tobii.Gaming.Examples.GazePointData
 {
-    public class eyeTracker : MonoBehaviour
+    public class EyeTracker : MonoBehaviour
     {
 		[Range(3.0f, 15.0f), Tooltip("Number of gaze points in point cloud.")]
 		public int PointCloudSize = 10;

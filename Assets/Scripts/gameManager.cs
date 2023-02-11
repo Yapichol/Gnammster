@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 
 
-public class gameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+
+    // managers
+    public GaugesManager gaugesM;
+    public FoodManager foodM;
+    public ObstaclesManager obstaclesM;
 
     // timing
     private float timing;

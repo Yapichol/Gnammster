@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class nutriment : MonoBehaviour
+public class Nutriment : MonoBehaviour
 {
     public float proteines;
     public float lipides;

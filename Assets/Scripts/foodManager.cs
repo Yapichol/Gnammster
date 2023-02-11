@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class foodManager : MonoBehaviour
+public class FoodManager : MonoBehaviour
 {
     public GameObject wheel;
     public float largeurWheel;

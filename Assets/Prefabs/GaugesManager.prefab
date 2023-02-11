@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &420196757524574166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 420196757524574160}
+  - component: {fileID: 420196757524574161}
+  m_Layer: 0
+  m_Name: GaugesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &420196757524574160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420196757524574166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1549.4469, y: 823.3945, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &420196757524574161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420196757524574166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c9e0abb748fa74a96b8c472cdc3745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yellowGaugeSlider: {fileID: 0}
+  redGaugeSlider: {fileID: 0}
+  blueGaugeSlider: {fileID: 0}
+  yellowGaugeImage: {fileID: 0}
+  redGaugeImage: {fileID: 0}
+  blueGaugeImage: {fileID: 0}
+  yellowSadGauges: {fileID: 6485558183970147211, guid: c02a835043f75974fba8a4536e0acf07, type: 3}
+  redSadGauges: {fileID: -6259277501983900114, guid: c02a835043f75974fba8a4536e0acf07, type: 3}
+  blueSadGauges: {fileID: 5469430418015080102, guid: c02a835043f75974fba8a4536e0acf07, type: 3}
+  yellowNormalGauges: {fileID: -6274544904832223569, guid: e8201260e958fef4e9fde124efdf2922, type: 3}
+  redNormalGauges: {fileID: -1006127485340076860, guid: e8201260e958fef4e9fde124efdf2922, type: 3}
+  blueNormalGauges: {fileID: -5463885123676074805, guid: e8201260e958fef4e9fde124efdf2922, type: 3}
+  yellowHappyGauges: {fileID: 3837762622326683933, guid: 8dd75fc550bf89c449353530b9cdcb4b, type: 3}
+  redHappyGauges: {fileID: -3064944791221870679, guid: 8dd75fc550bf89c449353530b9cdcb4b, type: 3}
+  blueHappyGauges: {fileID: -2741678974612132092, guid: 8dd75fc550bf89c449353530b9cdcb4b, type: 3}
