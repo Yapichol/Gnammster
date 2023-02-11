@@ -62,6 +62,6 @@ MonoBehaviour:
   - {fileID: 4873618891224066484, guid: 7718a177a497ae74db0016371636dd22, type: 3}
   - {fileID: 6989907878181095993, guid: 37c238fb29dbdd845af16e4334bfbba9, type: 3}
   - {fileID: 8106219750880710415, guid: cf3d5cd1cc622474bbb0e4d403e7878f, type: 3}
-  freqSpawnMin: 1
-  freqSpawnMax: 5
+  freqSpawnMin: 0.1
+  freqSpawnMax: 0.3
   randomSpawn: 1

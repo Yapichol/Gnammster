@@ -8,6 +8,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+
     // player and wheel management
     public PlayerController player;
     public Rotator rotator;

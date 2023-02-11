@@ -8,13 +8,12 @@ public class Nutriment : MonoBehaviour
     public float lipides;
     public float glucides;
 
-    public GameManager gameM;
-    
+    public GameObject[] gameManagerObjects;
+   
     
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -29,7 +28,11 @@ public class Nutriment : MonoBehaviour
         if(other.tag == "Player")
         {
             // The player eats the food and gets nutrients
-            gameM.EatFood(lipides, proteines, glucides);
+            gameManagerObjects = GameObject.FindGameObjectsWithTag("GameManager");
+            foreach (GameObject go in gameManagerObjects) {
+                go.GetComponent<GameManager>().EatFood(lipides, proteines, glucides);
+            }
+            
             Debug.Log("proteines :" + proteines + "     lipides :" + lipides + "     glucides :" + glucides);
 
             Destroy(this.gameObject);

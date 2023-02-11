@@ -61,9 +61,9 @@ public class GaugesManager : MonoBehaviour
 
     public void SetGauges(float lipidsV, float proteinsV, float carboV)
     {
-        lipidsValue = lipidsV;
-        proteinsValue = proteinsV;
-        carboValue = carboV;
+        lipidsValue = lipidsValue + lipidsV;
+        proteinsValue = proteinsValue + proteinsV;
+        carboValue = carboValue + carboV;
         SetGaugesMood();
         ShowGauges();
     }

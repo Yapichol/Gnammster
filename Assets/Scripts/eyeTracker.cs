@@ -102,7 +102,7 @@ namespace Tobii.Gaming.Examples.GazePointData
             }
 			else
             {
-				Debug.Log("Invalid gaze point !");
+				//Debug.Log("Invalid gaze point !");
             }
         }
 
