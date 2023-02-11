@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3220045939365451643}
   - component: {fileID: 5893562187452306349}
   m_Layer: 0
-  m_Name: Foin
+  m_Name: Hay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

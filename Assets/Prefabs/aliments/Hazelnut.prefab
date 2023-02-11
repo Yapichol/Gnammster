@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3939093228527083528}
   - component: {fileID: 3077202927534770404}
   m_Layer: 0
-  m_Name: Noisette
+  m_Name: Hazelnut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
