@@ -7,6 +7,8 @@ public class Nutriment : MonoBehaviour
     public float proteines;
     public float lipides;
     public float glucides;
+
+    public GameManager gameM;
     
     
     // Start is called before the first frame update
@@ -26,7 +28,9 @@ public class Nutriment : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            print("proteines :" + proteines + "     lipides :" + lipides + "     glucides :" + glucides);
+            // The player eats the food and gets nutrients
+            gameM.EatFood(lipides, proteines, glucides);
+            Debug.Log("proteines :" + proteines + "     lipides :" + lipides + "     glucides :" + glucides);
 
             Destroy(this.gameObject);
         }
