@@ -21,6 +21,7 @@ public class FoodManager : MonoBehaviour
         randomSpawn = false;
         freqSpawnMin = 0;
         freqSpawnMax = 0;
+
     }
 
     // Update is called once per frame

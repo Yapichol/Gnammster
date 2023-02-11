@@ -8,12 +8,14 @@ public class Nutriment : MonoBehaviour
     public float lipides;
     public float glucides;
 
+
     public GameObject[] gameManagerObjects;
    
     
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
