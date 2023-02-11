@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1539043546634980412}
   - component: {fileID: 917807617683631028}
   m_Layer: 0
-  m_Name: G_Tournesol
+  m_Name: SunflowerSeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

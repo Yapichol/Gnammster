@@ -33,7 +33,7 @@ public class Nutriment : MonoBehaviour
                 go.GetComponent<GameManager>().EatFood(lipides, proteines, glucides);
             }
             
-            Debug.Log("proteines :" + proteines + "     lipides :" + lipides + "     glucides :" + glucides);
+            Debug.Log("eated ------> proteines :" + proteines + "     lipides :" + lipides + "     glucides :" + glucides);
 
             Destroy(this.gameObject);
         }
