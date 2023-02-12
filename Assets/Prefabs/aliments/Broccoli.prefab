@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1269057280537748346}
   m_Layer: 0
   m_Name: Broccoli
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39994949007d1a3408e21456e0a0660f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proteines: 2.8
-  lipides: 0.4
-  glucides: 6.6
+  lipids: 0.4
+  proteins: 2.8
+  carbos: 6.6
+  gameManagerObjects: []

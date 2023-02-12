@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 917807617683631028}
   m_Layer: 0
   m_Name: SunflowerSeed
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39994949007d1a3408e21456e0a0660f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proteines: 20.2
-  lipides: 52.7
-  glucides: 15
+  lipids: 52.7
+  proteins: 20.2
+  carbos: 15
+  gameManagerObjects: []
