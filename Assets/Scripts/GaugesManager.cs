@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,14 +14,14 @@ public class GaugesManager : MonoBehaviour
     private float carboValue;
 
     // Max values of gauges (grams)
-    public float lipidsMaxValue;
-    public float proteinsMaxValue;
-    public float carboMaxValue;
+    private float lipidsMaxValue;
+    private float proteinsMaxValue;
+    private float carboMaxValue;
 
     // Defining critical gauge thresholds (grams) : [lower, equilibriumMin, equilibriumMax, upper]
-    public float[] thresholds_yellowGauge;
-    public float[] thresholds_redGauge;
-    public float[] thresholds_blueGauge;
+    private float[] thresholds_yellowGauge;
+    private float[] thresholds_redGauge;
+    private float[] thresholds_blueGauge;
 
     // Sliders to manipulate the gauges' nutritional levels
     public Slider yellowGaugeSlider;
@@ -28,9 +29,14 @@ public class GaugesManager : MonoBehaviour
     public Slider blueGaugeSlider;
 
     // Variable to manipulate  the gauges' emotional mood : 1 means sad, 2 means normal, 3 means happy 
-    public int yellowGaugeMood;
-    public int redGaugeMood;
-    public int blueGaugeMood;
+    private int yellowGaugeMood;
+    private int redGaugeMood;
+    private int blueGaugeMood;
+
+    // Descent pace of each gauge level (grams/second)
+    private float yellowGaugeDescentPace;
+    private float redGaugeDescentPace;
+    private float blueGaugeDescentPace;
 
     // Sprits to show gauges emotions in fontion of thresholds
     public Image yellowGaugeImage;
@@ -46,12 +52,16 @@ public class GaugesManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lipidsValue = 0f;
-        proteinsValue = 0f;
-        carboValue = 0f;
+        thresholds_yellowGauge = new float[] { 0f, 0f, 0f, 0f };
+        thresholds_redGauge = new float[] { 0f, 0f, 0f, 0f };
+        thresholds_blueGauge = new float[] { 0f, 0f, 0f, 0f };
 
-        SetGaugesMood();
-        ShowGauges();
+        SetGauges(0f, 0f, 0f);
+    }
+
+    private void Update()
+    {
+        descentGaugesProcess();
     }
 
     public int GetEquilibriumFactor()
@@ -59,11 +69,17 @@ public class GaugesManager : MonoBehaviour
         return yellowGaugeMood + redGaugeMood + blueGaugeMood;
     }
 
+
+    public void AddGauges(float lipidsV, float proteinsV, float carboV)
+    {
+        SetGauges(lipidsValue + lipidsV, proteinsValue + proteinsV, carboValue + carboV);
+    }
+
     public void SetGauges(float lipidsV, float proteinsV, float carboV)
     {
-        lipidsValue = lipidsValue + lipidsV;
-        proteinsValue = proteinsValue + proteinsV;
-        carboValue = carboValue + carboV;
+        lipidsValue = lipidsV;
+        proteinsValue = proteinsV;
+        carboValue = carboV;
         SetGaugesMood();
         ShowGauges();
     }
@@ -85,7 +101,6 @@ public class GaugesManager : MonoBehaviour
 
     void SetGaugesMood()
     {
-
         if (lipidsValue < thresholds_yellowGauge[0] || lipidsValue > thresholds_yellowGauge[3])         { yellowGaugeMood = 1; } 
         else if (lipidsValue > thresholds_yellowGauge[1] && lipidsValue < thresholds_yellowGauge[2])    { yellowGaugeMood = 3; }
         else { yellowGaugeMood = 2; }
@@ -97,7 +112,6 @@ public class GaugesManager : MonoBehaviour
         if (carboValue < thresholds_blueGauge[0] || carboValue > thresholds_blueGauge[3])               { blueGaugeMood = 1; }
         else if (carboValue > thresholds_blueGauge[1] && carboValue < thresholds_blueGauge[2])          { blueGaugeMood = 3; }
         else { blueGaugeMood = 2; }
-
     }
 
     void ShowGauges()
@@ -117,6 +131,43 @@ public class GaugesManager : MonoBehaviour
         if (blueGaugeMood == 1) { blueGaugeImage.sprite = blueSadGauges; }
         else if (blueGaugeMood == 2) { blueGaugeImage.sprite = blueNormalGauges; }
         else { blueGaugeImage.sprite = blueHappyGauges; }
+    }
+
+
+    public void SetThresholds(string gaugeType, float lower, float equilibriumMin, float equilibriumMax, float upper)
+    {
+        if (gaugeType == "yellowGauge")     { thresholds_yellowGauge = new float[] { lower, equilibriumMin, equilibriumMax, upper }; }
+        else if (gaugeType == "redGauge")   { thresholds_redGauge = new float[] { lower, equilibriumMin, equilibriumMax, upper }; }
+        else if (gaugeType == "blueGauge")  { thresholds_blueGauge = new float[] { lower, equilibriumMin, equilibriumMax, upper }; }
+    }
+
+    public float GetLowerThreshold(string gaugeType)
+    {
+        if (gaugeType == "yellowGauge")     { return thresholds_yellowGauge[0]; }
+        else if (gaugeType == "redGauge")   { return thresholds_redGauge[0]; }
+        else if (gaugeType == "blueGauge")  { return thresholds_blueGauge[0]; }
+        else return 0f;
+    }
+
+    public void SetDescentPace(string gaugeType, float dp)
+    {
+        if (gaugeType == "yellowGauge")     { yellowGaugeDescentPace = dp; }
+        else if (gaugeType == "redGauge")   { redGaugeDescentPace = dp; }
+        else if (gaugeType == "blueGauge")  { blueGaugeDescentPace = dp; }
+    }
+
+    void descentGaugesProcess()
+    {
+        lipidsValue -= yellowGaugeDescentPace * Time.deltaTime;
+        proteinsValue -= redGaugeDescentPace * Time.deltaTime;
+        carboValue -= blueGaugeDescentPace * Time.deltaTime;
+
+        lipidsValue = Math.Max(0f, lipidsValue);
+        proteinsValue = Math.Max(0f, proteinsValue);
+        carboValue = Math.Max(0f, carboValue);
+
+        SetGauges(lipidsValue, proteinsValue, carboValue);
+        Debug.Log("descending ------> lipidsValue :" + lipidsValue + "      proteinsValue :" + proteinsValue + "     carboValue :" + carboValue);
     }
 
 }
