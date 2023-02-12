@@ -53,6 +53,8 @@ public class FoodManager : MonoBehaviour
         newFood.transform.position = spawnPos;
 
         newFood.transform.parent = wheel.transform;
+
+        newFood.GetComponent<Nutrition>().indexFood = numFood;
     }
 
 
@@ -66,7 +68,7 @@ public class FoodManager : MonoBehaviour
 
     Vector3 selectPosToSpawn()
     {
-        Vector3 position = new Vector3(wheel.transform.position.x, wheel.transform.position.y + rayonWheel - 0.1f, wheel.transform.position.z + Random.Range(largeurWheel / -2, largeurWheel / 2));
+        Vector3 position = new Vector3(wheel.transform.position.x -( rayonWheel - 0.1f), wheel.transform.position.y , wheel.transform.position.z + Random.Range(largeurWheel / -2, largeurWheel / 2));
         return position;
     }
 

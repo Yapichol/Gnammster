@@ -173,6 +173,15 @@ public class GaugesManager : MonoBehaviour
         else if (gaugeType == "blueGauge")  { blueGaugeDescentPace = dp; }
     }
 
+
+    public float GetDescentPace(string gaugeType)
+    {
+        if (gaugeType == "yellowGauge") { return yellowGaugeDescentPace; }
+        else if (gaugeType == "redGauge") { return redGaugeDescentPace; }
+        else if (gaugeType == "blueGauge") { return blueGaugeDescentPace; }
+        else return -1;
+    }
+
     void descentGaugesProcess()
     {
         lipidsValue -= yellowGaugeDescentPace * Time.deltaTime;
@@ -184,7 +193,7 @@ public class GaugesManager : MonoBehaviour
         carbosValue = Math.Max(0f, carbosValue);
 
         SetGauges(lipidsValue, proteinsValue, carbosValue);
-        Debug.Log("descending ------> lipidsValue :" + lipidsValue + "      proteinsValue :" + proteinsValue + "     carbosValue :" + carbosValue);
+        //Debug.Log("descending ------> lipidsValue :" + lipidsValue + "      proteinsValue :" + proteinsValue + "     carbosValue :" + carbosValue);
     }
 
     IEnumerator yellowHighlightFeedback(int highlightTimes)

@@ -13,6 +13,8 @@ public class Nutrition : MonoBehaviour
     public static int gramsSinglePortion;
 
     public GameObject[] gameManagerObjects;
+
+    public int indexFood;
    
     
     // Start is called before the first frame update
@@ -26,18 +28,24 @@ public class Nutrition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        gameManagerObjects = GameObject.FindGameObjectsWithTag("GameManager");
+        if (other.tag == "Player")
         {
             // The player eats the food and gets nutrients
-            gameManagerObjects = GameObject.FindGameObjectsWithTag("GameManager");
+            
 
             foreach (GameObject go in gameManagerObjects) {
                 go.GetComponent<GameManager>().EatFood(lipids, proteins, carbos);
+                go.GetComponent<GameManager>().SetSlidingWindow(indexFood, 1);
             }
             Debug.Log("eated ------> lipids :" + lipids + "     proteins: " + proteins + "carbos :" + carbos);
             Destroy(this.gameObject);
         }
         if (other.tag == "Cleaner"){
+            foreach (GameObject go in gameManagerObjects)
+            {
+                go.GetComponent<GameManager>().SetSlidingWindow(indexFood, 0);
+            }
             Destroy(this.gameObject);
         }
     }
