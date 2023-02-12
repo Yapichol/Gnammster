@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 2574333253281410148}
   - component: {fileID: 8681953854921556290}
   - component: {fileID: 5972109628957479059}
+  - component: {fileID: -5931613866640420040}
   m_Layer: 0
   m_Name: Demo White Rabbit
   m_TagString: Player
@@ -307,6 +308,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5931613866640420040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115346038830892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bab8f363c42d60429e540fbc0bc1eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yellowGaugeSlider: {fileID: 0}
+  redGaugeSlider: {fileID: 0}
+  blueGaugeSlider: {fileID: 0}
+  endGame: {fileID: 0}
+  hurtRestoreTime: 3
 --- !u!1 &1156470716658996
 GameObject:
   m_ObjectHideFlags: 0
