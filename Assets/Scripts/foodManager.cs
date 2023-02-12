@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class foodManager : MonoBehaviour
+public class FoodManager : MonoBehaviour
 {
     public GameObject wheel;
     public float largeurWheel;
@@ -11,20 +11,25 @@ public class foodManager : MonoBehaviour
     public float freqSpawnMin;
     public float freqSpawnMax;
 
+    public bool randomSpawn;
     private bool canSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
         canSpawn = true;
+        randomSpawn = false;
+        freqSpawnMin = 0;
+        freqSpawnMax = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canSpawn)
+        if (canSpawn && randomSpawn)
         {
-            spawnFood();
+            spawnFood(-1);
             canSpawn = false;
             float timeNextSpawn = Random.Range(freqSpawnMin, freqSpawnMax);
             StartCoroutine(coolDown(timeNextSpawn));
@@ -33,9 +38,13 @@ public class foodManager : MonoBehaviour
 
 
 
-    void spawnFood()
+    public void spawnFood(int foodNumber)
     {
-        int numFood = selectFoodToSpawn();
+        int numFood = foodNumber;
+        if (randomSpawn || (foodNumber < 0 || foodNumber >= prefabsFoods.Length))
+        {
+            numFood = selectFoodToSpawn();
+        }
 
         GameObject newFood = Instantiate(prefabsFoods[numFood]);
 

@@ -9,6 +9,8 @@ TagManager:
   - gaugesZone
   - scoreZone
   - timingZone
+  - GameManager
+  - Food
   layers:
   - Default
   - TransparentFX

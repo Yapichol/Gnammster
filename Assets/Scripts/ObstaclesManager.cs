@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ObstaclesGenerator : MonoBehaviour
+public class ObstaclesManager : MonoBehaviour
 {
     public GameObject [] all_obstacles ;
     public GameObject cylinder_obs = null;
