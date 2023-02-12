@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
         limLeft = transform.position.z - (widthWheel / 2);
         groundHeight = transform.position.y;
         m_animator = GetComponent<Animator>(); // Handle animations through animator state machine
+        ObstaclesGenerator.set_prob_apparition_obs(0.5f, 0.5f);
 
 
     }
@@ -112,7 +113,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Handle collisions
+    // Handle collisions & effects here
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Obstacles"))
         {
