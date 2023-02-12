@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Collision  !!!");
             other.gameObject.SetActive(false);
+            this.gameObject.GetComponent<PlayerHealth>().getHurt();
             //other.GetComponent<Renderer>().enabled = false;
         }
     }

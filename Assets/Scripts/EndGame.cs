@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
@@ -9,19 +10,22 @@ public class EndGame : MonoBehaviour
 
     public GameObject wheel;
 
-    public GameManager gm;
+    public GameManager gameManager;
 
-    public GameObject[] inGameUI;
+    public GameObject[] ToDeactivateAtEnd;
+
+    public TextMeshProUGUI inGameScore;
+    public TextMeshProUGUI inGameTimer;
 
     public TextMeshProUGUI endScore;
     public TextMeshProUGUI endTimer;
 
-    public GameObject[] endGameUI;
+    public GameObject[] ToActivateAtEnd;
     
     // Start is called before the first frame update
     void Start()
     {
-        foreach(GameObject go in endGameUI)
+        foreach(GameObject go in ToActivateAtEnd)
         {
             go.SetActive(false);
         }
@@ -33,15 +37,37 @@ public class EndGame : MonoBehaviour
         
     }
 
-    void endinGame()
+    public void endinGame()
     {
-        foreach (GameObject go in inGameUI)
-        {
-            go.SetActive(false);
-        }
-        foreach (GameObject go in endGameUI)
+        foreach (GameObject go in ToActivateAtEnd)
         {
             go.SetActive(true);
         }
+        if (endScore != null && inGameScore != null && endTimer != null && inGameTimer != null)
+        {
+            endScore.text = inGameScore.text;
+            endTimer.text = inGameTimer.text;
+        }
+        foreach (GameObject go in ToDeactivateAtEnd)
+        {
+            Destroy(go);
+            //go.SetActive(false);
+        }
+        Debug.Log("END GAME");
+    }
+
+
+    public void playAgain()
+    {
+        Debug.Log("PlayAgain");
+        SceneManager.LoadScene("GameScene");
+    }
+
+
+    public void backToMenu()
+    {
+        Debug.Log("Menu");
+        SceneManager.LoadScene("MenuScene");
+        SceneManager.UnloadSceneAsync("GameScene");
     }
 }
