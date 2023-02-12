@@ -64,13 +64,14 @@ public class GameManager : MonoBehaviour
         gnammsterDiet_maxGramsFoodPerDay = 15f;
 
         maxGramsFoodPerDay = gnammsterDiet_maxGramsFoodPerDay;
+        Nutrition.gramsSinglePortion = 15; // a modifier avec la valeur d'une portion (1-2 g)
 
         // The player eats the food and gets nutrients
-        GameObject[] nutritionObjects = GameObject.FindGameObjectsWithTag("Food");
-        foreach (GameObject go in nutritionObjects)
-        {
-            go.GetComponent<Nutrition>().SetGramsSinglePortion(1);
-        }
+        //GameObject[] nutritionObjects = GameObject.FindGameObjectsWithTag("Food");
+        //foreach (GameObject go in nutritionObjects)
+        //{
+        //    go.GetComponent<Nutrition>().SetGramsSinglePortion(1);
+        //}
 
         // Defining max values of gauges (grams)
         gaugesM.SetMaxGauges(gnammsterDiet_maxGramsFoodPerDay, gnammsterDiet_maxGramsFoodPerDay, gnammsterDiet_maxGramsFoodPerDay);
@@ -80,7 +81,6 @@ public class GameManager : MonoBehaviour
         float[] gnammsterDietThresholds_proteins = {5f, 12f, 18f, 50f};
         float[] gnammsterDietThresholds_carbos = {5f, 16f, 22f, 50f};
 
-        // Defining critical gauge thresholds (grams) : [lower, equilibriumMin, equilibriumMax, upper]
         gaugesM.SetThresholds("yellowGauge", maxGramsFoodPerDay * gnammsterDietThresholds_lipids[0] / 100, 
                                                 maxGramsFoodPerDay * gnammsterDietThresholds_lipids[1] / 100, 
                                                 maxGramsFoodPerDay * gnammsterDietThresholds_lipids[2] / 100,
@@ -97,13 +97,9 @@ public class GameManager : MonoBehaviour
                                                 maxGramsFoodPerDay * gnammsterDietThresholds_carbos[3] / 100);
 
         // Defining the descent pace of each gauge level (grams/second)
-        gaugesM.SetDescentPace("yellowGauge",   maxGramsFoodPerDay - (maxGramsFoodPerDay * gnammsterDietThresholds_lipids[2] / 100));
-        gaugesM.SetDescentPace("redGauge",      maxGramsFoodPerDay - (maxGramsFoodPerDay * gnammsterDietThresholds_proteins[2] / 100));
-        gaugesM.SetDescentPace("blueGauge",     maxGramsFoodPerDay - (maxGramsFoodPerDay * gnammsterDietThresholds_carbos[2] / 100));
-
-        gaugesM.SetDescentPace("yellowGauge", maxGramsFoodPerDay * gnammsterDietThresholds_lipids[2] / 10000);
-        gaugesM.SetDescentPace("redGauge", maxGramsFoodPerDay * gnammsterDietThresholds_proteins[2] / 10000);
-        gaugesM.SetDescentPace("blueGauge", maxGramsFoodPerDay * gnammsterDietThresholds_carbos[2] / 10000);
+        gaugesM.SetDescentPace("yellowGauge", gnammsterDietThresholds_lipids[1] / 100);
+        gaugesM.SetDescentPace("redGauge", gnammsterDietThresholds_proteins[1] / 100);
+        gaugesM.SetDescentPace("blueGauge", gnammsterDietThresholds_carbos[1] / 100);
 
         // Defining initial values for gauges (grams)
         gaugesM.SetGauges(gaugesM.GetLowerThreshold("yellowGauge") * 2, gaugesM.GetLowerThreshold("redGauge") * 2, gaugesM.GetLowerThreshold("blueGauge") * 2);

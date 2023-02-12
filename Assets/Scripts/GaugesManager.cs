@@ -9,9 +9,9 @@ public class GaugesManager : MonoBehaviour
 {
 
     // Current values of gauges (grams)
-    private float lipidsValue;
-    private float proteinsValue;
-    private float carbosValue;
+    public static float lipidsValue;
+    public static float proteinsValue;
+    public static float carbosValue;
 
     // Max values of gauges (grams)
     private float lipidsMaxValue;
@@ -19,9 +19,9 @@ public class GaugesManager : MonoBehaviour
     private float carbosMaxValue;
 
     // Defining critical gauge thresholds (grams) : [lower, equilibriumMin, equilibriumMax, upper]
-    private float[] thresholds_yellowGauge;
-    private float[] thresholds_redGauge;
-    private float[] thresholds_blueGauge;
+    public static float[] thresholds_yellowGauge;
+    private static float[] thresholds_redGauge;
+    private static float[] thresholds_blueGauge;
 
     // Sliders to manipulate the gauges' nutritional levels
     public Slider yellowGaugeSlider;
@@ -63,20 +63,13 @@ public class GaugesManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        thresholds_yellowGauge = new float[] { 0f, 0f, 0f, 0f };
-        thresholds_redGauge = new float[] { 0f, 0f, 0f, 0f };
-        thresholds_blueGauge = new float[] { 0f, 0f, 0f, 0f };
-
-        SetGauges(0f, 0f, 0f);
-
+    { 
         yellowGauge_originalColor = new Color(yellowGaugeFill.color.r, yellowGaugeFill.color.g, yellowGaugeFill.color.b, 1f);
         redGauge_originalColor = new Color(redGaugeFill.color.r, redGaugeFill.color.g, redGaugeFill.color.b, 1f);
         blueGauge_originalColor = new Color(blueGaugeFill.color.r, blueGaugeFill.color.g, blueGaugeFill.color.b, 1f);
         highlightColor = new Color(255f, 255f, 255f, 1f);
         gaugeHighlightTime = 0.1f;
         highlightTimes = 2;
-
     }
 
     private void Update()

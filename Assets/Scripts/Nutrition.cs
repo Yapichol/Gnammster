@@ -10,7 +10,7 @@ public class Nutrition : MonoBehaviour
     public float carbos;
 
     // Weight of one portion of food used for the game (grams) 
-    private int gramsSinglePortion;
+    public static int gramsSinglePortion;
 
     public GameObject[] gameManagerObjects;
    
@@ -18,8 +18,6 @@ public class Nutrition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gramsSinglePortion = 15; // je n'arrive pas à le set depuis game manager, il faudrait
-
         // gramsSinglePortion is set in the GameManager script, in Start()
         lipids = lipids * gramsSinglePortion / 100;
         proteins = proteins * gramsSinglePortion / 100;
