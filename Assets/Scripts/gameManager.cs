@@ -7,6 +7,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    // Audioclips
+    public AudioSource audioSource;
+    public AudioClip soundEat;
+    public AudioClip soundDisgust;
 
     // player and wheel management
     public PlayerController player;
@@ -33,8 +37,6 @@ public class GameManager : MonoBehaviour
     private float scoreHighlightTime;
     private int score_highlightTimes;
 
-
-
     // specifics diet data
     private float gnammsterDiet_maxGramsFoodPerDay;
     private int[] gnammsterDiet_goodFood;
@@ -60,6 +62,10 @@ public class GameManager : MonoBehaviour
     private int[] foodSequence;
     private bool launchNewSlidingWindow;
     private float freqFood;
+
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -98,18 +104,8 @@ public class GameManager : MonoBehaviour
         ResetSlidingWindow(5);
         foodSequence = new int[] {0,0,0,0,0};
         freqFood = 2f;
-        
 
-
-
-    // The player eats the food and gets nutrients
-    //GameObject[] nutritionObjects = GameObject.FindGameObjectsWithTag("Food");
-    //foreach (GameObject go in nutritionObjects)
-    //{
-    //    go.GetComponent<Nutrition>().SetGramsSinglePortion(1);
-    //}
-
-    // Defining max values of gauges (grams)
+        // Defining max values of gauges (grams)
         gaugesM.SetMaxGauges(gnammsterDiet_maxGramsFoodPerDay, gnammsterDiet_maxGramsFoodPerDay, gnammsterDiet_maxGramsFoodPerDay);
 
         // Threshold for each gauge (percentages) : [lower, equilibriumMin, equilibriumMax, upper]
@@ -134,9 +130,6 @@ public class GameManager : MonoBehaviour
                                                 maxGramsFoodPerDay * gnammsterDietThresholds_carbos[3] / 100);
 
         // Defining the descent pace of each gauge level (grams/second)
-        /*gaugesM.SetDescentPace("yellowGauge", gnammsterDietThresholds_lipids[1] / 100);
-        gaugesM.SetDescentPace("redGauge", gnammsterDietThresholds_proteins[1] / 100);
-        gaugesM.SetDescentPace("blueGauge", gnammsterDietThresholds_carbos[1] / 100);*/
         gaugesM.SetDescentPace("yellowGauge", 0f);
         gaugesM.SetDescentPace("redGauge", 0f);
         gaugesM.SetDescentPace("blueGauge", 0f);
@@ -150,12 +143,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (score%1000 == 0) // test
-        //{
-        //    foodM.spawnFood(1);
-        //    StartCoroutine("scoreHighlightFeedback", 2); //test
-        //    StartCoroutine("timingHighlightFeedback", 2); //test
-        //}    
         if (launchNewSlidingWindow)
         {
             launchNewSlidingWindow = false;
@@ -190,6 +177,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator scoreHighlightFeedback(int scoreHighlightTimes)
     {
+        //    StartCoroutine("scoreHighlightFeedback", 2);
         for (int i = 0; i < scoreHighlightTimes; i++)
         {
             yield return new WaitForSeconds(scoreHighlightTime);
@@ -201,6 +189,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator timingHighlightFeedback(int timingHighlightTimes)
     {
+        //    StartCoroutine("timingHighlightFeedback", 2);
         for (int i = 0; i < timingHighlightTimes; i++)
         {
             yield return new WaitForSeconds(timingHighlightTime);
@@ -212,7 +201,6 @@ public class GameManager : MonoBehaviour
 
     private void ResetSlidingWindow(int slidingWindowSize)
     {
-        
         slidingWindow_actionPlayer = new int[slidingWindowSize];
         slidingWindow_food = new int[slidingWindowSize];
         foodSequence = new int[slidingWindowSize];
@@ -221,6 +209,15 @@ public class GameManager : MonoBehaviour
 
     public void SetSlidingWindow(int indexFood, int eaten)
     {
+        if (eaten == 1) {
+            if (true){ //(indexFood in gnammsterDiet_goodFood.Cont) || (indexFood in gnammsterDiet_ambiguousGoodFood) ) {
+                audioSource.PlayOneShot(soundEat);
+            } else
+            {
+                audioSource.PlayOneShot(soundDisgust);
+            }
+        }
+
         slidingWindow_food[currentIndexWindow] = indexFood;
         slidingWindow_actionPlayer[currentIndexWindow] = eaten * healthEquilibriumFactor;
         currentIndexWindow++;
