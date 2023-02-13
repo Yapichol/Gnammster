@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.tobii.gaming.sdk": "file:D:/Documents/Sorbonne_Universite/M2-ANDROIDE/EVHI/TobiiUnitySDK_5.0.0.3",
+    "com.tobii.gaming.sdk": "file:C:/Users/Kales/Desktop/Projets/Gnammster/TobiiUnitySDK_5.0.0.3",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.collab-proxy": "1.9.0",
     "com.unity.ide.rider": "2.0.7",
