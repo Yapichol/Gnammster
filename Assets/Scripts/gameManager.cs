@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip soundEat;
     public AudioClip soundDisgust;
+    public AudioClip soundObstacles;
 
     // player and wheel management
     public PlayerController player;
