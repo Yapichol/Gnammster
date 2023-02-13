@@ -54,11 +54,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKey(KeyCode.RightArrow) && (transform.position.z < limRight))
+        if((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) ) && (transform.position.z < limRight))
         {
             transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, 1), speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && (transform.position.z > limLeft))
+        if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Q)) && (transform.position.z > limLeft))
         {
             transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, -1), speed * Time.deltaTime);
         }

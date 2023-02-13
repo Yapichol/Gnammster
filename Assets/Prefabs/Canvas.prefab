@@ -378,6 +378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: blueGaugeObjets
       objectReference: {fileID: 0}
+    - target: {fileID: 4460957178276511087, guid: 8267492c14ddf3548ad3e743468a34e8, type: 3}
+      propertyPath: m_TagString
+      value: gaugesZone
+      objectReference: {fileID: 0}
     - target: {fileID: 4460957178276511088, guid: 8267492c14ddf3548ad3e743468a34e8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -576,6 +580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: timingObjets
       objectReference: {fileID: 0}
+    - target: {fileID: 1246734433180494723, guid: 4742525f54f3c834a96d0d54d8c5f38f, type: 3}
+      propertyPath: m_TagString
+      value: timingZone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4742525f54f3c834a96d0d54d8c5f38f, type: 3}
 --- !u!224 &340168097926152702 stripped
@@ -695,6 +703,10 @@ PrefabInstance:
     - target: {fileID: 7146402332450602574, guid: db0b271a4300b374c8af55c7f32985e3, type: 3}
       propertyPath: m_Name
       value: scoreObjets
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146402332450602574, guid: db0b271a4300b374c8af55c7f32985e3, type: 3}
+      propertyPath: m_TagString
+      value: scoreZone
       objectReference: {fileID: 0}
     - target: {fileID: 7146402332450602575, guid: db0b271a4300b374c8af55c7f32985e3, type: 3}
       propertyPath: m_Pivot.x

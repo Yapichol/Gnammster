@@ -52,11 +52,14 @@ namespace Tobii.Gaming.Examples.GazePointData
 
 		public bool showGP;
 		public GameObject eyeTrackerPoint;
+		public bool mouseController;
+		public float speedMouse = 1;
+		private bool activated;
 
 		// Start is called before the first frame update
 		void Start()
         {
-			if (showGP)
+			if (showGP || mouseController)
 			{
 				InitializeGazePointBuffer();
 				InitializeGazePointCloudSprites();
@@ -64,23 +67,34 @@ namespace Tobii.Gaming.Examples.GazePointData
 				_last = PointCloudSize - 1;
 
 				_gazeBubbleRenderer = GetComponent<SpriteRenderer>();
+
+				eyeTrackerPoint.GetComponent<RectTransform>().position = Vector3.zero;
+				activated = true;
 			}
             else
             {
 				eyeTrackerPoint.SetActive(false);
-            }
+				activated = false;
+			}
+			
 		}
 
         // Update is called once per frame
         void Update()
         {
-			if (showGP == true)
+			if (showGP == true || mouseController == true)
 			{
-				eyeTrackerPoint.SetActive(true);
+				if (!activated)
+				{
+					eyeTrackerPoint.SetActive(true);
+					eyeTrackerPoint.GetComponent<RectTransform>().position = Vector3.zero;
+					activated = true;
+				}
 			}
 			else
 			{
 				eyeTrackerPoint.SetActive(false);
+				activated = false;
 			}
 
 			GazePoint gazePoint = TobiiAPI.GetGazePoint();
@@ -104,7 +118,18 @@ namespace Tobii.Gaming.Examples.GazePointData
             {
 				//Debug.Log("Invalid gaze point !");
             }
-        }
+			if (mouseController)
+			{
+				if (Input.GetAxis("Mouse X") != 0)
+				{
+					eyeTrackerPoint.GetComponent<RectTransform>().position += new Vector3(speedMouse * Input.GetAxis("Mouse X") * Time.deltaTime, 0, 0);
+				}
+				if (Input.GetAxis("Mouse Y") != 0)
+				{
+					eyeTrackerPoint.GetComponent<RectTransform>().position += new Vector3(0, speedMouse * Input.GetAxis("Mouse Y") * Time.deltaTime, 0);
+				}
+			}
+		}
 
 
 		void showGazePoint(GazePoint gazePoint)
@@ -118,6 +143,7 @@ namespace Tobii.Gaming.Examples.GazePointData
 				//yCoord.color = xCoord.color = Color.white;
 				Vector2 roundedSampleInput = new Vector2(Mathf.RoundToInt(gazePosition.x), Mathf.RoundToInt(gazePosition.y));
 				eyeTrackerPoint.GetComponent<RectTransform>().position = new Vector3(roundedSampleInput.x, roundedSampleInput.y, eyeTrackerPoint.GetComponent<RectTransform>().position.z);
+
 			}
 			UpdateGazePointCloudVisibility();
 		}
