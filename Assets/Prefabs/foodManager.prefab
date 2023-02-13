@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3782558829188499486}
   - component: {fileID: 2240878700267786343}
   m_Layer: 0
-  m_Name: FoodManager
+  m_Name: foodManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,9 +44,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheel: {fileID: 0}
-  largeurWheel: 0
-  rayonWheel: 0
-  prefabsFoods: []
-  freqSpawnMin: 0
-  freqSpawnMax: 0
+  largeurWheel: 0.45
+  rayonWheel: 1
+  prefabsFoods:
+  - {fileID: 8763924245986891529, guid: 638ddf763166dc943a16dec912d4a70a, type: 3}
+  - {fileID: 1514489749205428271, guid: 8f33ab780f702f74bba0eecd707f7f80, type: 3}
+  - {fileID: 3410794957498222376, guid: d1ffc33702cf0ce498cae8717768e9e4, type: 3}
+  - {fileID: 7797664959139168791, guid: d44a4c788c1495f40b84c7ed2824d912, type: 3}
+  - {fileID: 2012481549604450976, guid: 43a2e227919769b48904ebeea021ba7c, type: 3}
+  - {fileID: 4226475217561541269, guid: b169a8c194d8e904bba60fe92faa481f, type: 3}
+  - {fileID: 6955816474687102283, guid: 835933c9454f59f4b95d88c32daa8a61, type: 3}
+  - {fileID: 3865765099323778369, guid: 0bcd4c0a710fad546b8169bbbe895dc4, type: 3}
+  - {fileID: 8820969151098899864, guid: b7d456c899296a5409454ee0fddce050, type: 3}
+  - {fileID: 5507248859027463067, guid: 13571ac34b534fa4f9fa79c0382b4c9a, type: 3}
+  - {fileID: 8288610214322486382, guid: 8f97b721ee8e9cd4b8bce8ee0763f67b, type: 3}
+  - {fileID: 5990141932442830556, guid: 40e2e3e0b96f54e4caf8185d78c048e6, type: 3}
+  - {fileID: 4873618891224066484, guid: 7718a177a497ae74db0016371636dd22, type: 3}
+  - {fileID: 6989907878181095993, guid: 37c238fb29dbdd845af16e4334bfbba9, type: 3}
+  - {fileID: 8106219750880710415, guid: cf3d5cd1cc622474bbb0e4d403e7878f, type: 3}
+  freqSpawnMin: 1
+  freqSpawnMax: 3
   randomSpawn: 0

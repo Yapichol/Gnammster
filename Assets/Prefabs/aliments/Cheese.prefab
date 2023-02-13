@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6955816474687102283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.469257, y: -16.00458, z: 57.253258}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalPosition: {x: -60.186, y: -16.005, z: 57.079}
+  m_LocalScale: {x: 0.012939484, y: 0.012939484, z: 0.012939484}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6955816474687102283}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2544318000483907571, guid: d7663e521d703854bb744b45e020edfa, type: 3}
 --- !u!23 &5402780280891850073
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -112,3 +112,4 @@ MonoBehaviour:
   proteins: 28.4
   carbos: 0.3
   gameManagerObjects: []
+  indexFood: 0

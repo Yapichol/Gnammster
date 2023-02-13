@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         gaugesM.SetMaxGauges(gnammsterDiet_maxGramsFoodPerDay, gnammsterDiet_maxGramsFoodPerDay, gnammsterDiet_maxGramsFoodPerDay);
 
         // Threshold for each gauge (percentages) : [lower, equilibriumMin, equilibriumMax, upper]
-        gnammsterDietThresholds_lipids = new float[] {20f, 60f, 72f, 90f};
+        gnammsterDietThresholds_lipids = new float[] {21f, 60f, 72f, 90f};
         gnammsterDietThresholds_proteins = new float[] { 5f, 12f, 18f, 50f};
         gnammsterDietThresholds_carbos = new float[] { 7f, 16f, 22f, 50f};
 
@@ -230,6 +230,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CreateFoodSequenceProcess(float intervalSpawn)
     {
+        Debug.Log("YOUPI");
         foreach (int food in foodSequence)
         {
             foodM.spawnFood(food);
