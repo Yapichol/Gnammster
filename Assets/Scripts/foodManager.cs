@@ -52,6 +52,8 @@ public class FoodManager : MonoBehaviour
 
         newFood.transform.position = spawnPos;
 
+        newFood.transform.rotation = Quaternion.Euler(0, 0, -90);
+
         newFood.transform.parent = wheel.transform;
 
         newFood.GetComponent<Nutrition>().indexFood = numFood;

@@ -89,7 +89,7 @@ public class GaugesManager : MonoBehaviour
         if (withHighlight && lipidsV > 0f) { StartCoroutine("yellowHighlightFeedback", highlightTimes); } // parameter is how many times we highlight the gauge
         if (withHighlight && proteinsV > 0f) { StartCoroutine("redHighlightFeedback", highlightTimes); }
         if (withHighlight && carbosV > 0f) { StartCoroutine("blueHighlightFeedback", highlightTimes); }
-}
+    }
 
     public void SetGauges(float lipidsV, float proteinsV, float carbosV)
     {

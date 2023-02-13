@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7797664959139168791
+--- !u!1 &2497410679995684585
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 837793804547349097}
-  - component: {fileID: 1804507052256988246}
-  - component: {fileID: 8995777114382574718}
-  - component: {fileID: 8877898311750457334}
-  - component: {fileID: 8079749132686601257}
+  - component: {fileID: 3018332473447189587}
+  - component: {fileID: 2183294680712053750}
+  - component: {fileID: 4154686895810901820}
   m_Layer: 0
   m_Name: Apple
-  m_TagString: Food
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &837793804547349097
+--- !u!4 &3018332473447189587
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7797664959139168791}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.469257, y: -16.00458, z: 57.253258}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_GameObject: {fileID: 2497410679995684585}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.43, z: 0}
+  m_LocalScale: {x: 16.095255, y: 16.095253, z: 16.095253}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 837793804547349097}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1804507052256988246
+--- !u!33 &2183294680712053750
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7797664959139168791}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8995777114382574718
+  m_GameObject: {fileID: 2497410679995684585}
+  m_Mesh: {fileID: -472147775963580301, guid: 0b154ac8e8232bd45856493f0313483f, type: 3}
+--- !u!23 &4154686895810901820
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7797664959139168791}
+  m_GameObject: {fileID: 2497410679995684585}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,7 +59,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 68eaf3d4f6ae528478558f38e49c964b, type: 2}
+  - {fileID: 6495095659774500520, guid: 0b154ac8e8232bd45856493f0313483f, type: 3}
+  - {fileID: 2268340284772520465, guid: 0b154ac8e8232bd45856493f0313483f, type: 3}
+  - {fileID: 3105233257905414779, guid: 0b154ac8e8232bd45856493f0313483f, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,6 +83,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7797664959139168791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837793804547349097}
+  - component: {fileID: 8877898311750457334}
+  - component: {fileID: 8079749132686601257}
+  m_Layer: 0
+  m_Name: Apple
+  m_TagString: Food
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &837793804547349097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7797664959139168791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -60.469257, y: -16.00458, z: 57.253258}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_Children:
+  - {fileID: 3018332473447189587}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &8877898311750457334
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -112,3 +145,4 @@ MonoBehaviour:
   proteins: 0.3
   carbos: 13.8
   gameManagerObjects: []
+  indexFood: 0

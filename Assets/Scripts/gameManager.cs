@@ -172,9 +172,15 @@ public class GameManager : MonoBehaviour
         textScore.text = score.ToString();
     }
 
-    public void EatFood(float lipidsV, float proteinsV, float carbosV)
+    public void EatFood(float lipidsV, float proteinsV, float carbosV, int indexFood)
     {
-        gaugesM.AddGauges(lipidsV, proteinsV, carbosV, true);
+        if (isGood(indexFood)){
+            gaugesM.AddGauges(lipidsV, proteinsV, carbosV, false);
+        }
+        else
+        {
+            gaugesM.AddGauges(-lipidsV, -proteinsV, -carbosV, true);
+        }
     }
 
     void ComputeTiming()
@@ -230,7 +236,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CreateFoodSequenceProcess(float intervalSpawn)
     {
-        Debug.Log("YOUPI");
         foreach (int food in foodSequence)
         {
             foodM.spawnFood(food);
@@ -270,6 +275,27 @@ public class GameManager : MonoBehaviour
             gaugesM.SetDescentPace("blueGauge", gnammsterDietThresholds_carbos[1] / 100);
 
             rotator._speed = Mathf.Min(rotator._speed + (rotator._speed * nbSlidingWindowsCreated * speedPace), maxSpeedWheel);
+            ResetSlidingWindow(5);
+            for (int i = 0; i < foodSequence.Length; i++)
+            {
+                foodSequence[i] = 0;
+            }
+            int bad1 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length - 1)];
+            int bad2 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length - 1)];
+
+            int badOrder1 = Random.Range(0, foodSequence.Length - 1);
+            int badOrder2 = badOrder1;
+            if (foodSequence.Length > 1)
+            {
+                while (badOrder2 == badOrder1)
+                {
+                    badOrder2 = Random.Range(0, foodSequence.Length - 1);
+                }
+            }
+            foodSequence[badOrder1] = bad1;
+            foodSequence[badOrder2] = bad2;
+            launchNewSlidingWindow = true;
+            return;
         }
 
 
@@ -280,6 +306,26 @@ public class GameManager : MonoBehaviour
             foodSequence[i] = 0;
         }*/
         
+    }
+
+
+    bool isGood(int indexFood)
+    {
+        foreach(int ind in gnammsterDiet_goodFood)
+        {
+            if(ind == indexFood)
+            {
+                return true;
+            }
+        }
+        foreach (int ind in gnammsterDiet_ambiguousGoodFood)
+        {
+            if (ind == indexFood)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

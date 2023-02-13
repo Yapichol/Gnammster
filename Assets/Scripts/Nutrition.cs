@@ -35,7 +35,7 @@ public class Nutrition : MonoBehaviour
             
 
             foreach (GameObject go in gameManagerObjects) {
-                go.GetComponent<GameManager>().EatFood(lipids, proteins, carbos);
+                go.GetComponent<GameManager>().EatFood(lipids, proteins, carbos, indexFood);
                 go.GetComponent<GameManager>().SetSlidingWindow(indexFood, 1);
             }
             Debug.Log("eated ------> lipids :" + lipids + "     proteins: " + proteins + "carbos :" + carbos);
