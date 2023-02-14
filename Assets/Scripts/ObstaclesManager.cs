@@ -16,6 +16,7 @@ public class ObstaclesManager : MonoBehaviour
     public static float prob_ball = 0.3f;
     public float wheel_r;
     public bool creatingObs = false;
+    public bool create;
 
 
     void Start()
@@ -38,10 +39,13 @@ public class ObstaclesManager : MonoBehaviour
 
     void Update()
     {
-        if (creatingObs == false)
+        if (create)
         {
-            creatingObs = true;
-            StartCoroutine(GenerateObs(prob_haie, prob_ball));
+            if (creatingObs == false)
+            {
+                creatingObs = true;
+                StartCoroutine(GenerateObs(prob_haie, prob_ball));
+            }
         }
     }
 

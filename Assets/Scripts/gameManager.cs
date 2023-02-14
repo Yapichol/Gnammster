@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Tobii;
 
 
 
@@ -55,15 +56,22 @@ public class GameManager : MonoBehaviour
     private float maxSpeedWheel;
 
     // Adaptation
+    public Tobii.Gaming.Examples.GazePointData.EyeTracker eyeTrack;
     private int nbSlidingWindowsCreated;
     private int[] slidingWindow_food;
-    private int[] slidingWindow_actionPlayer;
+    private int[] slidingWindow_statePlayer;
+    private int[] slidingWindow_eaten;
+    private float[] slidingWindow_lookedGauges;
     private int currentIndexWindow;
     private bool beginnerMode;
     private int[] foodSequence;
     private bool launchNewSlidingWindow;
     private float freqFood;
-
+    private float levelPlayer;
+    private float[] performencesPlayer;
+    private float[] attentionPlayer;
+    private float timeLastEat;
+    public int sizeAdaptation = 10;
 
 
 
@@ -105,6 +113,16 @@ public class GameManager : MonoBehaviour
         ResetSlidingWindow(5);
         foodSequence = new int[] {0,0,0,0,0};
         freqFood = 2f;
+        performencesPlayer = new float[sizeAdaptation];
+        for(int i = 0; i < performencesPlayer.Length; i++)
+        {
+            performencesPlayer[i] = 0;
+        }
+        attentionPlayer = new float[sizeAdaptation];
+        for (int i = 0; i < attentionPlayer.Length; i++)
+        {
+            attentionPlayer[i] = 0;
+        }
 
         // Defining max values of gauges (grams)
         gaugesM.SetMaxGauges(gnammsterDiet_maxGramsFoodPerDay, gnammsterDiet_maxGramsFoodPerDay, gnammsterDiet_maxGramsFoodPerDay);
@@ -162,11 +180,14 @@ public class GameManager : MonoBehaviour
 
     public void EatFood(float lipidsV, float proteinsV, float carbosV, int indexFood)
     {
+        timeLastEat = Time.time;
         if (isGood(indexFood)){
-            gaugesM.AddGauges(lipidsV, proteinsV, carbosV, false);
+            audioSource.PlayOneShot(soundEat);
+            gaugesM.AddGauges(lipidsV, proteinsV, carbosV, true);
         }
         else
         {
+            audioSource.PlayOneShot(soundDisgust);
             gaugesM.AddGauges(-lipidsV, -proteinsV, -carbosV, true);
         }
     }
@@ -208,25 +229,18 @@ public class GameManager : MonoBehaviour
 
     private void ResetSlidingWindow(int slidingWindowSize)
     {
-        slidingWindow_actionPlayer = new int[slidingWindowSize];
+        slidingWindow_statePlayer = new int[slidingWindowSize];
         slidingWindow_food = new int[slidingWindowSize];
+        slidingWindow_eaten = new int[slidingWindowSize];
         foodSequence = new int[slidingWindowSize];
         currentIndexWindow = 0;
     }
 
     public void SetSlidingWindow(int indexFood, int eaten)
     {
-        if (eaten == 1) {
-            if (true){ //(indexFood in gnammsterDiet_goodFood.Cont) || (indexFood in gnammsterDiet_ambiguousGoodFood) ) {
-                audioSource.PlayOneShot(soundEat);
-            } else
-            {
-                audioSource.PlayOneShot(soundDisgust);
-            }
-        }
-
         slidingWindow_food[currentIndexWindow] = indexFood;
-        slidingWindow_actionPlayer[currentIndexWindow] = eaten * healthEquilibriumFactor;
+        slidingWindow_statePlayer[currentIndexWindow] = healthEquilibriumFactor;
+        slidingWindow_eaten[currentIndexWindow] = eaten;
         currentIndexWindow++;
         
         if (currentIndexWindow == slidingWindow_food.Length) { analyzer(); }
@@ -248,7 +262,7 @@ public class GameManager : MonoBehaviour
         // First sliding window (introduction)
         if (gaugesM.GetDescentPace("yellowGauge") == 0f){
             int nbMissed = 0;
-            foreach(int val in slidingWindow_actionPlayer)
+            foreach(int val in slidingWindow_eaten)
             {
                 if (val == 0)
                 {
@@ -268,9 +282,9 @@ public class GameManager : MonoBehaviour
             }
 
             nbSlidingWindowsCreated++;
-            gaugesM.SetDescentPace("yellowGauge", gnammsterDietThresholds_lipids[1] / 100);
-            gaugesM.SetDescentPace("redGauge", gnammsterDietThresholds_proteins[1] / 100);
-            gaugesM.SetDescentPace("blueGauge", gnammsterDietThresholds_carbos[1] / 100);
+            gaugesM.SetDescentPace("yellowGauge", (gnammsterDietThresholds_lipids[1]/4) / 100);
+            gaugesM.SetDescentPace("redGauge", (gnammsterDietThresholds_proteins[1]/4) / 100);
+            gaugesM.SetDescentPace("blueGauge", (gnammsterDietThresholds_carbos[1]/4) / 100);
 
             rotator._speed = Mathf.Min(rotator._speed + (rotator._speed * nbSlidingWindowsCreated * speedPace), maxSpeedWheel);
             ResetSlidingWindow(5);
@@ -278,16 +292,16 @@ public class GameManager : MonoBehaviour
             {
                 foodSequence[i] = 0;
             }
-            int bad1 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length - 1)];
-            int bad2 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length - 1)];
+            int bad1 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length)];
+            int bad2 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length)];
 
-            int badOrder1 = Random.Range(0, foodSequence.Length - 1);
+            int badOrder1 = Random.Range(0, foodSequence.Length);
             int badOrder2 = badOrder1;
             if (foodSequence.Length > 1)
             {
                 while (badOrder2 == badOrder1)
                 {
-                    badOrder2 = Random.Range(0, foodSequence.Length - 1);
+                    badOrder2 = Random.Range(0, foodSequence.Length);
                 }
             }
             foodSequence[badOrder1] = bad1;
@@ -295,15 +309,175 @@ public class GameManager : MonoBehaviour
             launchNewSlidingWindow = true;
             return;
         }
-
-
-        /*ResetSlidingWindow(slidingWindowSize);
-
-        for (int i=0; i < slidingWindowSize; i++)
+        else if (beginnerMode)
         {
-            foodSequence[i] = 0;
+            float perf = getPerformenceOnWindow();
+            updateLevelPlayer(perf);
+            rotator._speed = Mathf.Min(rotator._speed + (rotator._speed * nbSlidingWindowsCreated * speedPace), maxSpeedWheel);
+            Debug.Log(levelPlayer);
+            if(levelPlayer > 0.14)
+            {
+                beginnerMode = false;
+            }
+            else
+            {
+                ResetSlidingWindow(5);
+                for (int i = 0; i < foodSequence.Length; i++)
+                {
+                    foodSequence[i] = 0;
+                }
+                int bad1 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length)];
+                int bad2 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length)];
+                int bad3 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length)];
+
+                int badOrder1 = Random.Range(0, foodSequence.Length);
+                int badOrder2 = badOrder1;
+                if (foodSequence.Length > 1)
+                {
+                    while (badOrder2 == badOrder1)
+                    {
+                        badOrder2 = Random.Range(0, foodSequence.Length);
+                    }
+                }
+                int badOrder3 = badOrder2;
+                if (foodSequence.Length > 2)
+                {
+                    while (badOrder3 == badOrder1 && badOrder3 == badOrder2)
+                    {
+                        badOrder3 = Random.Range(0, foodSequence.Length);
+                    }
+                }
+                foodSequence[badOrder1] = bad1;
+                foodSequence[badOrder2] = bad2;
+                foodSequence[badOrder3] = bad3;
+                launchNewSlidingWindow = true;
+                obstaclesM.create = true;
+                beginnerMode = false;
+                return;
+            }
+        }
+        float perfs = getPerformenceOnWindow();
+        updateLevelPlayer(perfs);
+        rotator._speed = Mathf.Min(rotator._speed + (rotator._speed * nbSlidingWindowsCreated * speedPace), maxSpeedWheel);
+        if (levelPlayer > 0.5f)
+        {
+            freqFood = 1.5f;
+            ResetSlidingWindow(5);
+            for (int i = 0; i < foodSequence.Length; i++)
+            {
+                foodSequence[i] = gnammsterDiet_goodFood[Random.Range(0, gnammsterDiet_goodFood.Length)]; ;
+            }
+            int AmbGood = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_ambiguousGoodFood.Length)];
+            int bad = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length)];
+            int AmbBad = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_ambiguousBadFood.Length)];
+
+            int AmbGoodOrder = Random.Range(0, foodSequence.Length);
+            int badOrder = AmbGoodOrder;
+            if (foodSequence.Length > 1)
+            {
+                while (badOrder == AmbGoodOrder)
+                {
+                    badOrder = Random.Range(0, foodSequence.Length);
+                }
+            }
+            int AmbBadOrder = badOrder;
+            if (foodSequence.Length > 2)
+            {
+                while (AmbBadOrder == AmbGoodOrder && AmbBadOrder == badOrder)
+                {
+                    AmbBadOrder = Random.Range(0, foodSequence.Length);
+                }
+            }
+            foodSequence[AmbGoodOrder] = AmbGood;
+            foodSequence[badOrder] = bad;
+            foodSequence[AmbBadOrder] = AmbBad;
+            launchNewSlidingWindow = true;
+        }
+        else
+        {
+            freqFood = 1.75f;
+            ResetSlidingWindow(5);
+            for (int i = 0; i < foodSequence.Length; i++)
+            {
+                foodSequence[i] = gnammsterDiet_goodFood[Random.Range(0, gnammsterDiet_goodFood.Length)];
+            }
+            int bad1 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length)];
+            int bad2 = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length)];
+
+            int badOrder1 = Random.Range(0, foodSequence.Length);
+            int badOrder2 = badOrder1;
+            if (foodSequence.Length > 1)
+            {
+                while (badOrder2 == badOrder1)
+                {
+                    badOrder2 = Random.Range(0, foodSequence.Length);
+                }
+            }
+            foodSequence[badOrder1] = bad1;
+            foodSequence[badOrder2] = bad2;
+            launchNewSlidingWindow = true;
+        }
+    }
+
+
+    float getPerformenceOnWindow()
+    {
+        float sum = 0;/*
+        for(int eq = 0; eq < slidingWindow_statePlayer.Length; eq++)
+        {
+            if ((!isGood(slidingWindow_food[eq])) && (slidingWindow_eaten[eq] == 1))
+            {
+                sum = sum + 0;
+            }
+            else
+            {
+                sum = sum + slidingWindow_statePlayer[eq];
+            }
         }*/
-        
+        if (eyeTrack.get_activated())
+        {
+            int nb_eaten = 0;
+            for (int eq = 0; eq < slidingWindow_statePlayer.Length; eq++)
+            {
+                if ((slidingWindow_eaten[eq] == 1))
+                {
+                    sum = sum + slidingWindow_lookedGauges[eq];
+                    nb_eaten++;
+                }
+            }
+            sum = sum / (nb_eaten);
+        }
+        return sum;
+    }
+
+
+    void updateLevelPlayer(float newPerf)
+    {
+        /*for(int i = performencesPlayer.Length - 2; i >= 0; i--)
+        {
+            performencesPlayer[i + 1] = performencesPlayer[i];
+        }
+        performencesPlayer[0] = newPerf;
+        float sum = 0;
+        foreach(float perf in performencesPlayer)
+        {
+            sum = sum + perf;
+        }
+        levelPlayer = sum / performencesPlayer.Length;*/
+        if (eyeTrack.get_activated())
+        {
+            for (int i = attentionPlayer.Length - 2; i >= 0; i--)
+            {
+                attentionPlayer[i + 1] = attentionPlayer[i];
+            }
+            attentionPlayer[0] = newPerf;
+            float sum = 0;
+            foreach (float perf in attentionPlayer)
+            {
+                sum = sum + perf;
+            }
+            levelPlayer = sum / attentionPlayer.Length;
+        }
     }
 
 
@@ -324,6 +498,16 @@ public class GameManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void lookedAtGauges()
+    {
+        float lookedTime = Time.time;
+        float timeSpend = timeLastEat - lookedTime;
+        if(timeSpend >= 0f && timeSpend <= 1f)
+        {
+            slidingWindow_lookedGauges[currentIndexWindow] = 1f;
+        }
     }
 
 }

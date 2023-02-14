@@ -63,14 +63,14 @@ public class FoodManager : MonoBehaviour
 
     int selectFoodToSpawn()
     {
-        int number = Random.Range(0, prefabsFoods.Length - 1);
+        int number = Random.Range(0, prefabsFoods.Length);
         return number;
     }
 
 
     Vector3 selectPosToSpawn()
     {
-        Vector3 position = new Vector3(wheel.transform.position.x -( rayonWheel - 0.1f), wheel.transform.position.y , wheel.transform.position.z + Random.Range(largeurWheel / -2, largeurWheel / 2));
+        Vector3 position = new Vector3(wheel.transform.position.x -( rayonWheel - 0.1f), wheel.transform.position.y , wheel.transform.position.z + Random.Range(largeurWheel / -2f, largeurWheel / 2f));
         return position;
     }
 

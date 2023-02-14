@@ -61,6 +61,7 @@ MonoBehaviour:
   obstaclesM: {fileID: 0}
   textTiming: {fileID: 0}
   textScore: {fileID: 0}
+  sizeAdaptation: 10
 --- !u!222 &7710763690524081683
 CanvasRenderer:
   m_ObjectHideFlags: 0

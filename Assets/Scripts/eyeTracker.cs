@@ -176,6 +176,11 @@ namespace Tobii.Gaming.Examples.GazePointData
 			}
 		}
 
+		public bool get_activated()
+        {
+			return activated;
+        }
+
 		private void UpdateGazePointCloudVisibility()
 		{
 			bool isPointCloudVisible = !UseFilter;
