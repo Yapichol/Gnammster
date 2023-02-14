@@ -120,14 +120,15 @@ namespace Tobii.Gaming.Examples.GazePointData
             }
 			if (mouseController)
 			{
-				if (Input.GetAxis("Mouse X") != 0)
+				/*if (Input.GetAxis("Mouse X") != 0)
 				{
 					eyeTrackerPoint.GetComponent<RectTransform>().position += new Vector3(speedMouse * Input.GetAxis("Mouse X") * Time.deltaTime, 0, 0);
 				}
 				if (Input.GetAxis("Mouse Y") != 0)
 				{
 					eyeTrackerPoint.GetComponent<RectTransform>().position += new Vector3(0, speedMouse * Input.GetAxis("Mouse Y") * Time.deltaTime, 0);
-				}
+				}*/
+				eyeTrackerPoint.GetComponent<RectTransform>().position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, eyeTrackerPoint.GetComponent<RectTransform>().position.z);
 			}
 		}
 

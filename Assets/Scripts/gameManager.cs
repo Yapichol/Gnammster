@@ -283,7 +283,7 @@ public class GameManager : MonoBehaviour
             }
 
             nbSlidingWindowsCreated++;
-            gaugesM.SetDescentPace("yellowGauge", (gnammsterDietThresholds_lipids[1]/4) / 100);
+            gaugesM.SetDescentPace("yellowGauge", (gnammsterDietThresholds_lipids[1]/6) / 100);
             gaugesM.SetDescentPace("redGauge", (gnammsterDietThresholds_proteins[1]/4) / 100);
             gaugesM.SetDescentPace("blueGauge", (gnammsterDietThresholds_carbos[1]/4) / 100);
 
@@ -352,16 +352,17 @@ public class GameManager : MonoBehaviour
                 foodSequence[badOrder2] = bad2;
                 foodSequence[badOrder3] = bad3;
                 launchNewSlidingWindow = true;
-                obstaclesM.create = true;
+                obstaclesM.create = false;
                 beginnerMode = false;
                 return;
             }
         }
+        obstaclesM.create = false;
         float perfs = getPerformenceOnWindow();
         updateLevelPlayer(perfs);
         rotator._speed = Mathf.Min(rotator._speed + (rotator._speed * nbSlidingWindowsCreated * speedPace), maxSpeedWheel);
         Debug.Log("Niveau : " + levelPlayer);
-        if (levelPlayer > 0.5f)
+        if (levelPlayer > 0.4f)
         {
             freqFood = 1.5f;
             ResetSlidingWindow(5);
@@ -369,9 +370,9 @@ public class GameManager : MonoBehaviour
             {
                 foodSequence[i] = gnammsterDiet_goodFood[Random.Range(0, gnammsterDiet_goodFood.Length)]; ;
             }
-            int AmbGood = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_ambiguousGoodFood.Length)];
+            int AmbGood = gnammsterDiet_ambiguousGoodFood[Random.Range(0, gnammsterDiet_ambiguousGoodFood.Length)];
             int bad = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_badFood.Length)];
-            int AmbBad = gnammsterDiet_badFood[Random.Range(0, gnammsterDiet_ambiguousBadFood.Length)];
+            int AmbBad = gnammsterDiet_ambiguousBadFood[Random.Range(0, gnammsterDiet_ambiguousBadFood.Length)];
 
             int AmbGoodOrder = Random.Range(0, foodSequence.Length);
             int badOrder = AmbGoodOrder;

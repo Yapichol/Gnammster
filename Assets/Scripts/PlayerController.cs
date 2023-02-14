@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Obstacles"))
         {
-            Debug.Log("Collision  !!!");
+            //Debug.Log("Collision  !!!");
             other.gameObject.SetActive(false);
             this.gameObject.GetComponent<PlayerHealth>().getHurt();
             //other.GetComponent<Renderer>().enabled = false;

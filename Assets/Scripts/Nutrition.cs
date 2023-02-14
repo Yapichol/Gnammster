@@ -38,7 +38,7 @@ public class Nutrition : MonoBehaviour
                 go.GetComponent<GameManager>().EatFood(lipids, proteins, carbos, indexFood);
                 go.GetComponent<GameManager>().SetSlidingWindow(indexFood, 1);
             }
-            Debug.Log("eated ------> lipids :" + lipids + "     proteins: " + proteins + "carbos :" + carbos);
+            //Debug.Log("eated ------> lipids :" + lipids + "     proteins: " + proteins + "carbos :" + carbos);
             Destroy(this.gameObject);
         }
         if (other.tag == "Cleaner"){
