@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5990141932442830556
+--- !u!1 &5713229709163728672
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5889572378112624103}
-  - component: {fileID: 9021177067474340451}
-  - component: {fileID: 3185819431552815544}
-  - component: {fileID: 2322220579183431526}
-  - component: {fileID: 3896667993739942478}
+  - component: {fileID: 4900664655667123610}
+  - component: {fileID: 8335445063829477951}
+  - component: {fileID: 6073531080345267957}
   m_Layer: 0
-  m_Name: Snail
-  m_TagString: Food
+  m_Name: snail_sketchfab
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5889572378112624103
+--- !u!4 &4900664655667123610
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5990141932442830556}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.469257, y: -16.00458, z: 57.253258}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_GameObject: {fileID: 5713229709163728672}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: -0.272, z: 0.66}
+  m_LocalScale: {x: 627.2348, y: 627.2348, z: 627.2348}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 5889572378112624103}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &9021177067474340451
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
+--- !u!33 &8335445063829477951
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5990141932442830556}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3185819431552815544
+  m_GameObject: {fileID: 5713229709163728672}
+  m_Mesh: {fileID: 2833990666634714160, guid: 23f4319b3ff172a4291d4bdc1dc770ed, type: 3}
+--- !u!23 &6073531080345267957
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5990141932442830556}
+  m_GameObject: {fileID: 5713229709163728672}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,6 +81,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5990141932442830556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5889572378112624103}
+  - component: {fileID: 2322220579183431526}
+  - component: {fileID: 3896667993739942478}
+  m_Layer: 0
+  m_Name: Snail
+  m_TagString: Food
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5889572378112624103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5990141932442830556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -60.469257, y: -16.00458, z: 57.253258}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_Children:
+  - {fileID: 4900664655667123610}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2322220579183431526
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -112,3 +143,4 @@ MonoBehaviour:
   proteins: 16
   carbos: 2
   gameManagerObjects: []
+  indexFood: 0
