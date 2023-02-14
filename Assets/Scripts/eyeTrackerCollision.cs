@@ -22,24 +22,24 @@ public class EyeTrackerCollision : MonoBehaviour
         GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         if (collision.tag == "gaugesZone") 
         {
-            Debug.Log(collision.tag);
+            //Debug.Log(collision.tag);
             gm.lookedAtGauges();
         } 
         
         else if (collision.tag == "scoreZone")
         {
-            Debug.Log(collision.tag);
+            //Debug.Log(collision.tag);
         }
         
         else if (collision.tag == "timingZone")
         {
-            Debug.Log(collision.tag);
+            //Debug.Log(collision.tag);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("exit");
+        //Debug.Log("exit");
     }
 
 

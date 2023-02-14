@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         foodSequence = new int[] {0,0,0,0,0};
         freqFood = 2f;
         performencesPlayer = new float[sizeAdaptation];
-        for(int i = 0; i < performencesPlayer.Length; i++)
+        for (int i = 0; i < performencesPlayer.Length; i++)
         {
             performencesPlayer[i] = 0;
         }
@@ -232,6 +232,7 @@ public class GameManager : MonoBehaviour
         slidingWindow_statePlayer = new int[slidingWindowSize];
         slidingWindow_food = new int[slidingWindowSize];
         slidingWindow_eaten = new int[slidingWindowSize];
+        slidingWindow_lookedGauges = new float[slidingWindowSize];
         foodSequence = new int[slidingWindowSize];
         currentIndexWindow = 0;
     }
@@ -359,6 +360,7 @@ public class GameManager : MonoBehaviour
         float perfs = getPerformenceOnWindow();
         updateLevelPlayer(perfs);
         rotator._speed = Mathf.Min(rotator._speed + (rotator._speed * nbSlidingWindowsCreated * speedPace), maxSpeedWheel);
+        Debug.Log("Niveau : " + levelPlayer);
         if (levelPlayer > 0.5f)
         {
             freqFood = 1.5f;
@@ -503,9 +505,12 @@ public class GameManager : MonoBehaviour
     public void lookedAtGauges()
     {
         float lookedTime = Time.time;
-        float timeSpend = timeLastEat - lookedTime;
-        if(timeSpend >= 0f && timeSpend <= 1f)
+        
+        float timeSpend = lookedTime - timeLastEat;
+        Debug.Log(timeSpend);
+        if (timeSpend >= 0f && timeSpend <= 1f)
         {
+            Debug.Log("LOOKED AT 2");
             slidingWindow_lookedGauges[currentIndexWindow] = 1f;
         }
     }
