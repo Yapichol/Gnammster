@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
         rotator._speed = 2f;
         speedPace = 0.1f;
-        maxSpeedWheel = 6f;
+        maxSpeedWheel = 5f;
 
         // food per day to correctly feed the animal
         gnammsterDiet_maxGramsFoodPerDay = 15f;
@@ -180,15 +180,19 @@ public class GameManager : MonoBehaviour
 
     public void EatFood(float lipidsV, float proteinsV, float carbosV, int indexFood)
     {
+        if(levelPlayer < 0.4)
+        {
+            gaugesM.HilightGauges();
+        }
         timeLastEat = Time.time;
         if (isGood(indexFood)){
             audioSource.PlayOneShot(soundEat);
-            gaugesM.AddGauges(lipidsV, proteinsV, carbosV, true);
+            gaugesM.AddGauges(lipidsV, proteinsV, carbosV, false);
         }
         else
         {
             audioSource.PlayOneShot(soundDisgust);
-            gaugesM.AddGauges(-lipidsV, -proteinsV, -carbosV, true);
+            gaugesM.AddGauges(-lipidsV, -proteinsV, -carbosV, false);
         }
     }
 
@@ -284,8 +288,8 @@ public class GameManager : MonoBehaviour
 
             nbSlidingWindowsCreated++;
             gaugesM.SetDescentPace("yellowGauge", (gnammsterDietThresholds_lipids[1]/6) / 100);
-            gaugesM.SetDescentPace("redGauge", (gnammsterDietThresholds_proteins[1]/4) / 100);
-            gaugesM.SetDescentPace("blueGauge", (gnammsterDietThresholds_carbos[1]/4) / 100);
+            gaugesM.SetDescentPace("redGauge", (gnammsterDietThresholds_proteins[1]/5) / 100);
+            gaugesM.SetDescentPace("blueGauge", (gnammsterDietThresholds_carbos[1]/5) / 100);
 
             rotator._speed = Mathf.Min(rotator._speed + (rotator._speed * nbSlidingWindowsCreated * speedPace), maxSpeedWheel);
             ResetSlidingWindow(5);
@@ -352,12 +356,12 @@ public class GameManager : MonoBehaviour
                 foodSequence[badOrder2] = bad2;
                 foodSequence[badOrder3] = bad3;
                 launchNewSlidingWindow = true;
-                obstaclesM.create = false;
+                obstaclesM.create = true;
                 beginnerMode = false;
                 return;
             }
         }
-        obstaclesM.create = false;
+        obstaclesM.create = true;
         float perfs = getPerformenceOnWindow();
         updateLevelPlayer(perfs);
         rotator._speed = Mathf.Min(rotator._speed + (rotator._speed * nbSlidingWindowsCreated * speedPace), maxSpeedWheel);

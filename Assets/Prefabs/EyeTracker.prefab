@@ -48,7 +48,7 @@ MonoBehaviour:
   PointScale: 0.1
   VisualizationDistance: 10
   FilterSmoothingFactor: 0.15
-  showGP: 1
+  showGP: 0
   eyeTrackerPoint: {fileID: 0}
   mouseController: 0
   speedMouse: 1

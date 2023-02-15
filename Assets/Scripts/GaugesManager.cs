@@ -229,4 +229,12 @@ public class GaugesManager : MonoBehaviour
         }
     }
 
+    public void HilightGauges()
+    {
+        StartCoroutine("yellowHighlightFeedback", highlightTimes);
+
+        StartCoroutine("redHighlightFeedback", highlightTimes);
+
+        StartCoroutine("blueHighlightFeedback", highlightTimes);
+    }
 }
