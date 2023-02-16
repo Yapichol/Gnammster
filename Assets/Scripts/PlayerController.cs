@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private Animator m_animator;
     private string[] m_animations = new string[] { "Idle", "Run", "Dead" };
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +55,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(transform.position.y < groundHeight)
+        {
+            transform.position = new Vector3(transform.position.x, groundHeight, transform.position.z);
+        }
         if((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) ) && (transform.position.z < limRight))
         {
             transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, 0, 1), speed * Time.deltaTime);
@@ -67,6 +72,10 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Peut sauter");
             jumping = true;
             targetJump = jumpHeight;
+            if (anim != null)
+            {
+                anim.SetBool("Jump", true);
+            }
             //transform.position.y = transform.position.y + 0.1f;
         }
         if (jumping)
@@ -106,10 +115,17 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log(acceleration);
                 transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(0, -1, 0), acceleration * speedJump * Time.deltaTime);
             }
-            /*else
+            else
             {
-                acceleration = 1.0f;
-            }*/
+                if (anim != null)
+                {
+                    anim.SetBool("Jump", false);
+                }
+                //acceleration = 1.0f;
+            }
+        }
+        if (anim != null) {
+            anim.SetFloat("SpeedRunning", wheel.GetComponentInChildren<Rotator>()._speed * 0.75f);
         }
     }
 
